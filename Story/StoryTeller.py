@@ -4,6 +4,8 @@ import webbrowser
 import pyttsx3 as speaker
 from tkinter import *
 
+
+# Colorsection for Textcolors
 black = lambda text: '\033[0;30m' + text + '\033[0m'
 red = lambda text: '\033[0;31m' + text + '\033[0m'
 green = lambda text: '\033[0;32m' + text + '\033[0m'
@@ -13,12 +15,14 @@ magenta = lambda text: '\033[0;35m' + text + '\033[0m'
 cyan = lambda text: '\033[0;36m' + text + '\033[0m'
 white = lambda text: '\033[0;37m' + text + '\033[0m'
 
+#Starts the speaker!
 engine = speaker.init()
 engine.say("Willkommen auf Benji's Geschichtenerzähler!")
 print(yellow("Willkommen auf Benji's Geschichtenerzähler!"))
 engine.runAndWait()
 
 
+# Speaker introduces himself
 def vorstellung():
     engine.say("Hallo, ich bin Speaky!"
                " Ich werde dich durch diesen Programm begleiten und dir die Geschichten vorlesen."
@@ -30,12 +34,17 @@ def vorstellung():
     engine.runAndWait()
 
 
+vorstellung()
+
+
+# Stops everything
 def anhalter():
     engine.say("Programm wird angehalten")
     engine.runAndWait()
     sys.exit("Programm angehalten")
 
 
+# Stories from txt files
 def story1():
     s1 = open("Story1.txt", "r")
     if s1.mode == "r":
@@ -205,6 +214,7 @@ def story10():
         engine.runAndWait()
 
 
+# randomly picks a story from 1 to 10
 def generator():
     print("Zufallsgenerator läuft")
     time.sleep(3)
@@ -236,6 +246,7 @@ def generator():
         engine.runAndWait()
 
 
+# redirects to YT playlist in Browser
 def musik():
     print("Playlist ist an")
     engine.say("Du wirst jetzt auf Benji#s persönliche Musikplaylist weitergeleitet")
@@ -243,11 +254,13 @@ def musik():
     webbrowser.open('https://www.youtube.com/playlist?list=PLIdk2M44Rqh-a46zFXar6ExeNtW7QXAQp')
 
 
+# Full GUI with Tkinter
 root = Tk()
 root.title("Menu")
 root.geometry("700x500+0+0")
 root.resizable(0, 0)
 heading = Label(root, text="Geschichtenerzähler", font=("arial", 40, "bold"), fg="steelblue").pack()
+# All labels(Text)
 label1 = Label(root, text="Willkommen auf den Geschichtenerzähler programmiert von Benji!\n"
                           " Klicke auf eine Geschichte um sie dir anzuhören \noder klicke auf"
                           " \"Zufall\" um eine zufällige Geschichte anzuhören", font=("arial", 10, "bold"),
@@ -256,6 +269,7 @@ label2 = Label(root, text="Liste aller Geschichten:").place(x=10, y=140)
 label3 = Label(root, text="Zufallsgenerator").place(x=390, y=160)
 label4 = Label(root, text="Achtung! Stoppt alles!").place(x=390, y=240)
 label5 = Label(root, text="Musikalische Unterhaltung").place(x=390, y=320)
+# All buttons(commands)
 stopper = Button(root, text="Stop", width=10, height=2, bg="red", command=anhalter).place(x=400, y=260)
 gesch1 = Button(root, text="Apotropäisch", width=10, height=2, bg="green", command=story1).place(x=20, y=160)
 gesch2 = Button(root, text="Schwarz", width=10, height=2, bg="green", command=story2).place(x=20, y=210)
